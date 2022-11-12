@@ -106,7 +106,7 @@ f.count += 1
 勇者に[emb exp="f.edamage"]のダメージ！[l][r]
 [if exp="f.plife<1"]
 勇者は倒れた。
-[escrept]
+[iscrept]
 f.flag = 1
 [endscript]
 [jump target=*death]
