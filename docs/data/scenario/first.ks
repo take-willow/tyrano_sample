@@ -18,7 +18,7 @@ f.etype = Math.floor(Math.random()*3+1)
 f.elv = Math.floor(Math.random()*2+f.plv-1)
 f.emaxlife = Math.floor(Math.random()*4*f.elv + f.elv*2)
 f.elife = f.emaxlife
-f.eattack = Math.floor(Math.random()*10*f.elv+f.elv/2)
+f.eattack = Math.floor(Math.random()*2*f.elv+f.elv/2)
 [endscript]
 
 [cm]
