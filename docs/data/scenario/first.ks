@@ -105,7 +105,7 @@ f.pattack += f.upattack
 勇者に[emb exp="f.edamage"]のダメージ！[l][r]
 [if exp="f.plife<1"]
 勇者は倒れた。
-[iscrept]
+[iscript]
 f.flag = 1
 [endscript]
 [jump target=*death]
