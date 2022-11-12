@@ -86,7 +86,6 @@ f.uplife = Math.floor(Math.random() * 4+2)
 f.upattack = Math.floor(Math.random() * 2+1)
 f.pmaxlife += f.uplife
 f.pattack += f.upattack
-f.count += 1
 [endscript]
 勇者はレベルが１上がった！[l][r]
 勇者はHPが[emb exp="f.uplife"]上がった！[l][r]
