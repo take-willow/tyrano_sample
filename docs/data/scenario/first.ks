@@ -7,18 +7,19 @@ f.count=0
 
 *start
 
-[eval exp="f.plife = f.pmaxlife"]
-
-[title name="モンスターが現れた"]
+[title name="モンスターが現れた！"]
 [hidemenubutton]
 [wait time=200]
 [freeimage layer="base"]
 [iscript]
+f.plife = f.pmaxlife
 f.etype = Math.floor(Math.random()*3+1)
 f.elv = Math.floor(Math.random()*2+f.plv-1)
 f.emaxlife = Math.floor(Math.random()*4*f.elv + f.elv*2)
 f.elife = f.emaxlife
 f.eattack = Math.floor(Math.random()*2*f.elv+f.elv/2)
+f.count += 1
+f.flag = 0
 [endscript]
 
 [cm]
@@ -81,8 +82,8 @@ f.elife -= f.pdamage
 を倒した！[l][r]
 [iscript]
 f.plv += 1
-f.uplife = Math.floor(Math.random() * 1+3)
-f.upattack = Math.floor(Math.random() * 1+1)
+f.uplife = Math.floor(Math.random() * 4+2)
+f.upattack = Math.floor(Math.random() * 2+1)
 f.pmaxlife += f.uplife
 f.pattack += f.upattack
 f.count += 1
@@ -105,6 +106,9 @@ f.count += 1
 勇者に[emb exp="f.edamage"]のダメージ！[l][r]
 [if exp="f.plife<1"]
 勇者は倒れた。
+[escrept]
+f.flag = 1
+[endscript]
 [jump target=*death]
 [endif]
 
@@ -134,7 +138,7 @@ HP：[emb exp="f.plife"]/[emb exp="f.pmaxlife"][r]
 勇者よ、死んでしまうとはなさけない！[l][r][r]
 冒険を続けますか？[r]
 [link target=*start] →はい [endlink][r]
-[link target=*end2] →いいえ
+[link target=*end] →いいえ
 [endlink][r]
 [s]
 
@@ -146,16 +150,17 @@ HP：[emb exp="f.plife"]/[emb exp="f.pmaxlife"][r]
 [endlink][r]
 [s]
 
-*end2
-[cm]
-Game Over[l][r]
-
 *end
 [cm]
-最終ステータス
+[if exp="f.flag==1"]
+Game Over[l][r][r]
+[endif]
+最終ステータス[r][r]
 勇者[r]
 レベル：[emb exp="f.plv"][r]
 HP：[emb exp="f.pmaxlife"][r]
 攻撃力：[emb exp="f.pattack"][r]
-倒した敵の数：[emb exp="f.count"][l][r][r]
+戦闘回数：[emb exp="f.count"][r]
+倒した敵の数：[emb exp="f.plv-2"][l][r][r]
+
 Thank you for playing![s]
